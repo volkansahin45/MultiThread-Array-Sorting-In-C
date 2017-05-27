@@ -103,12 +103,12 @@ int main()
 {
     int i;
 	pthread_t tids[3];
-
+    
     fillArray();
     shuffleArray();
 
 	pthread_create(&tids[0],NULL,runner, 0);
-    	pthread_create(&tids[1],NULL,runner, 1);
+    pthread_create(&tids[1],NULL,runner, 1);
 	pthread_join(tids[0],NULL);
 	pthread_join(tids[1],NULL);
 

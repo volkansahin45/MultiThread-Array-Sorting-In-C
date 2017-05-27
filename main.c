@@ -108,7 +108,7 @@ int main()
     shuffleArray();
 
 	pthread_create(&tids[0],NULL,runner, 0);
-    pthread_create(&tids[1],NULL,runner, 1);
+    	pthread_create(&tids[1],NULL,runner, 1);
 	pthread_join(tids[0],NULL);
 	pthread_join(tids[1],NULL);
 

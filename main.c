@@ -107,35 +107,35 @@ int main()
     fillArray();
     shuffleArray();
 
-	pthread_create(&tids[0],NULL,runner, 0);
+    pthread_create(&tids[0],NULL,runner, 0);
     pthread_create(&tids[1],NULL,runner, 1);
-	pthread_join(tids[0],NULL);
-	pthread_join(tids[1],NULL);
-
-	pthread_create(&tids[2],NULL,runner, 2);
-	pthread_join(tids[2],NULL);
+    pthread_join(tids[0],NULL);
+    pthread_join(tids[1],NULL);
+    
+    pthread_create(&tids[2],NULL,runner, 2);
+    pthread_join(tids[2],NULL);
 
 	printf("Main Thread\n");
 
     FILE *fp;
-    if((fp = fopen ("son.txt", "w+")) == NULL)
+    if((fp = fopen ("array.txt", "w+")) == NULL)
     {
-        printf("Dosya Acilamadi\n");
+        printf("Can't open the file\n");
         return;
     }
 
     if((fwrite(numberArray, sizeof(numberArray), 1, fp)) != 1)
     {
-        printf("Yazma Hatasi!!\n");
+        printf("Write Error!!\n");
         return;
     }
-    printf("Yazma Basarili\n");
+    printf("Write Success\n");
     fclose(fp);
 
 
-    if((fp = fopen ("son.txt", "r")) == NULL)
+    if((fp = fopen ("array.txt", "r")) == NULL)
     {
-        printf("Dosya Acilamadi\n");
+        printf("Can't open the file\n");
         return;
     }
 
@@ -143,13 +143,13 @@ int main()
 
     if((fread(readArray, sizeof(numberArray), 1, fp)) != 1)
     {
-        printf("Okuma Hatasi!!\n");
+        printf("Read Error!!\n");
         return;
     }
 
     fclose(fp);
 
-    printf("dosyadan okunan degerler\n");
+    printf("Numbers that read from file\n");
     for(i=0; i<1000; i++)
     {
         printf("%d ", readArray[i]);
